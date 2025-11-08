@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MpDemoApplication {
 
     public static void main(String[] args) {
+        args = new String[] {"--mpw.key=BsalzeK6QJEDkpt6"};
         SpringApplication.run(MpDemoApplication.class, args);
     }
 }

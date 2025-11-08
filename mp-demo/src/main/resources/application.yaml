@@ -2,8 +2,8 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/web01?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: 1234
+    username: mpw:DwD/plA8n3IIJvC6SU2klQ==
+    password: mpw:BhTEJ/4Oa8XfpfOiknL8kA==
 logging:
   level:
     com.itheima: debug
