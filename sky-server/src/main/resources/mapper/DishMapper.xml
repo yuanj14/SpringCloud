@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sky.mapper.DishMapper">
+    <select id="pageQuery" resultType="com.sky.vo.DishVO">
+        SELECT
+        d.*,
+        c.name AS category_name  <!-- Category名称，自动映射到DishVO的categoryName -->
+        FROM
+        dish d
+        LEFT JOIN
+        category c ON d.category_id = c.id
+        ${ew.customSqlSegment}  <!-- 接收MP Lambda拼接的条件 -->
+    </select>
+</mapper>
