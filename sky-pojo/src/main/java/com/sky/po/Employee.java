@@ -17,38 +17,38 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Employee implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-    private Long id;
+  private Long id;
 
-    private String username;
+  private String username;
 
-    private String name;
+  private String name;
 
-    @TableField(fill = FieldFill.INSERT)
-    private String password;
+  @TableField(fill = FieldFill.INSERT)
+  private String password;
 
-    private String phone;
+  private String phone;
 
-    private String sex;
+  private String sex;
 
-    private String idNumber;
+  private String idNumber;
 
-    private Integer status;
+  private Integer status;
 
-    // springBoot2 自定义 WebMvcConfig 覆盖了默认IOS序列化
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+  // springBoot2 自定义 WebMvcConfig 覆盖了默认IOS序列化
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  @TableField(fill = FieldFill.INSERT)
+  private LocalDateTime createTime;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  @TableField(fill = FieldFill.INSERT_UPDATE)
+  private LocalDateTime updateTime;
 
-    @TableField(fill = FieldFill.INSERT)
-    private Long createUser;
+  @TableField(fill = FieldFill.INSERT)
+  private Long createUser;
 
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Long updateUser;
+  @TableField(fill = FieldFill.INSERT_UPDATE)
+  private Long updateUser;
 
 }

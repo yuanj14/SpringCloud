@@ -28,12 +28,14 @@ import com.sky.service.DishService;
 import com.sky.service.EmployeeService;
 import com.sky.vo.DishVO;
 import org.apache.commons.lang3.ObjectUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.servlet.FlashMapManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -181,4 +183,43 @@ public class DishServiceImpl extends ServiceImpl<DishMapper, Dish> implements Di
         }
     }
 
+    /**
+     * 条件查询菜品和口味
+     * @param dish
+     * @return
+     */
+    @Override
+    public List<DishVO> listWithFlavor(Dish dish) {
+        List<Dish> dishList = dishMapper.list(dish);
+
+        List<DishVO> dishVOList = new ArrayList<>();
+
+        for (Dish d : dishList) {
+            DishVO dishVO = new DishVO();
+            BeanUtils.copyProperties(d,dishVO);
+
+            //根据菜品id查询对应的口味
+            List<DishFlavor> flavors = Db.lambdaQuery(DishFlavor.class).
+                    eq(DishFlavor::getDishId, d.getId())
+                    .list();
+            dishVO.setFlavors(flavors);
+            dishVOList.add(dishVO);
+        }
+
+        return dishVOList;
+    }
+
+    /**
+     * 根据分类id查询菜品
+     * @param categoryId
+     * @return
+     */
+    @Override
+    public List<Dish> list(Long categoryId) {
+        Dish dish = Dish.builder()
+                .categoryId(categoryId)
+                .status(StatusConstant.ENABLE)
+                .build();
+        return dishMapper.list(dish);
+    }
 }

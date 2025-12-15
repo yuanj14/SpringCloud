@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
  * 菜品
  */
 @Data
-@Builder
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @TableName(value = "dish", autoResultMap = true)
